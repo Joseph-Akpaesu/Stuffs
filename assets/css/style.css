@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  letter-spacing: normal;
+  font-family: 'Poppins', sans-serif;
+}
+
+.body {
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.ant-page-header {
+  margin-bottom: 60px !important;
+  border: 1px solid rgb(235, 237, 240)
+}
+.display-block {
+  display: block;
+}
+
+
