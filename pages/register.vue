@@ -1,374 +1,217 @@
 <template>
+<div>
+    <div class='nav-bar' style="position: absolute; z-index: 1; margin: 20px 0px 0px 40px;">
+    <ul>
+        <li>
+            <a href="#"><img src="~/assets/img/Group 10.png" alt="" width="50px"></a>
+        </li>
+    </ul>
+    </div>
+    <section>
+    <a-row>
+    <a-col :sm="{ span: 6, offset: 10}" :lg="{ span: 10, offset: 0 }">
+    <div>
+       <img src="~/assets/img/Group 113.png" alt="" width="520px" height="688px">
+    </div>
+    </a-col>
+    <a-col :sm="{ span: 11, offset: 10}" :lg="{ span: 8, offset: 5}">
+    <div class="sign-up-text">
+      <h3>Sign-up with joseph's mail</h3>
+      <p>Already hava an account? <a href="#">login</a></p>
+    <a-button type="" id="google-signup-btn">
+      <a href="#">Sign up with google</a>
+      <i class="fab fa-google google" style="color: black;"></i>
+    </a-button>
+    </div>
+    <a-form
+    id="components-form-demo-normal-login"
+    :form="form"
+    class="login-form"
+    @submit="handleSubmit">
+    <a-form-item>
+      <a-input
+        v-decorator="[
+          'userName',
+          { rules: [{ required: true, message: 'Please input your username!' }] },
+        ]"
+        placeholder="Username"
+      >
+        <a-icon slot="prefix" type="user" style="color: rgba(0,0,0,.25)" />
+      </a-input>
+    </a-form-item>
+    <a-form-item v-bind="formItemLayout">
+      <a-input
+        v-decorator="[
+          'email',
+          {
+            rules: [
+              {
+                type: 'email',
+                message: 'The input is not valid E-mail!',
+              },
+              {
+                required: true,
+                message: 'Please input your E-mail!',
+              },
+            ],
+          },
+        ]"
+        placeholder="Email"
+      >
+      <a-icon slot="prefix" type="message" style="color: rgba(0,0,0,.25)"/>
+      </a-input>
+    </a-form-item>
+    <a-form-item>
+      <a-input
+        v-decorator="[
+          'password',
+          { rules: [{ required: true, message: 'Please input your Password!' }] },
+        ]"
+        type="password"
+        placeholder="Password"
+      >
+        <a-icon slot="prefix" type="lock" style="color: rgba(0,0,0,.25)" />
+      </a-input>
+    </a-form-item>
+    <a-form-item >
+      <a-checkbox
+        v-decorator="[
+          'remember',
+          {
+            valuePropName: 'checked',
+            initialValue: true,
+          },
+        ]"
+      class="login-form-agreement" >
+           I agree to the terms of service and privacy policy
+      </a-checkbox><br>
+      <!--<a href="#" class="login-form-forgot">
+        Forgot password
+      </a>-->
+      <a-button type="" html-type="submit" class="login-form-button">
+        <a href="#">Register</a>
+      </a-button>
+    </a-form-item>
+  </a-form>
+    </a-col>
+    </a-row>
 
-  <div class="body">
-
-    <section class="home">
-      <div class="image-container">
-        <img src="~/assets/img/unsplash.jpg" alt="">
-      </div>
-
-      <div class="login-text" >
-        <h3>Register on Food App</h3>
-
-        <form action="">
-          <label for="uname"></label>
-          <input type="text" id="uname" name="uname" placeholder="Joe,Jimmy"><br>
-          <label for="email"></label>
-          <input type="email" id="email" name="email" placeholder="JoeJimmy@gmail |"><br>
-          <label for="password"></label>
-          <input type="password" id="password" name="Password" placeholder="password"><br>
-          <label for="Role"></label>
-          <select name="Role" id="Role" >
-            <div>
-              <option value="Role"></option>
-              <option value="Customer">Customer</option>
-              <option value="Vendor">Vendor</option>
-            </div>
-
-          </select>
-
-          <button>
-            <a href="#">Sign up</a>
-          </button>
-        </form>
-
-        <div class="google-sign-up">
-          <img src="~/assets/img/logo.png" alt="">
-          <a href="#">Sign up with Google</a>
-        </div>
-        <div class="Alternative">
-          <P>Already have an account?</P>
-          <a href="#">Sign in</a>
-        </div>
-
-      </div>
-      <div class="social-background">
-        <p>Follow us</p>
-        <ul class="social">
-          <li >
-            <a href="#"><img src="~/assets/img/logo.png" alt=""></a>
-          </li>
-          <li>
-            <a href="#"><img src="~/assets/img/logo.png" alt=""></a>
-          </li>
-          <li>
-            <a href="#"><img src="~/assets/img/logo.png" alt=""></a>
-          </li>
-        </ul>
-      </div>
 
     </section>
-
-  </div>
-
+</div>
 </template>
 
 <script>
-
-  export default {
-    data() {
-      return {
-        formData: {
-          role: "",
-          name: "",
-          email: "",
-          password: "",
-        },
-        // roleError: "",
-        // emailError: "",
-        // passwordError: "",
-      };
+    export default {
+        layout: 'plain',
+       beforeCreate() {
+    this.form = this.$form.createForm(this, { name: 'normal_login' });
+  },
+  methods: {
+    handleSubmit(e) {
+      e.preventDefault();
+      this.form.validateFields((err, values) => {
+        if (!err) {
+          console.log('Received values of form: ', values);
+        }
+      });
     },
-//   methods: {
-//     handleSubmit() {
-
-//       //validate password
-//       // this.passwordError =
-//       //   this.password.length > 5
-//       //     ? ""
-//       //     : "*Password must be at least 6 chars long";
-//       console.log(this.formData);
-//       this.$http
-//         .post("auth/register", this.formData)
-//         .then((res) => {
-//           console.log("success");
-//         })
-//         .catch((err) => {
-//           console.log("error");
-//         });
-//     },
-//   },
-  };
+  },
+};
 </script>
 
+<style >
 <style scoped>
 
+.nav-bar {
+width: 100%;
+}
+
+.nav-bar ul {
+display: flex;
+}
+
+.nav-bar li {
+list-style: none;
+}
 
 
-  .logo {
-    /* font-size: 30px; */
-  }
+#components-form-demo-normal-login{
+    margin: 75px 70px 0 -150px;
 
-  .nav-bar {
-    background-color: white;
-    width: 100%;
-    height: 11%;
-    top: 0%;
-  }
-
-  .nav-bar ul {
-    display: flex;
-    outline: 1px solid rgb(230, 226, 226);
-  }
-
-  .nav-bar li {
-    list-style: none;
-    margin-left: 35px;
-    margin-top: 29px;
-    margin-bottom: 29px;
-  }
-
-  .nav-bar a {
-    text-decoration: none;
-    color: rgb(110, 110, 110);
-    cursor: pointer;
-
-  }
-
-  .login-text  {
-    font-size: 1.4em;
-    font-weight: 900;
-    margin-left: 190px;
-    padding-top: 70px;
-    letter-spacing: 1px;
-    color: black;
-  }
-
-  .social {
-    left: 25%;
-    align-items: center;
-    position: absolute;
-    bottom: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 50%;
-  }
-
-  .social li {
-    list-style-type: none;
-    /* padding-left: 40px;  */
-    float: left;
-    padding-top: 20px;
-  }
-
-  .social li a {
-    left: 10%;
-    transform: scale(0.6 );
-    transition: 0.5s;
-    display: flex;
-    display: inline-block;
-    /* filter: invert(1); */
-    margin-right: 30px;
-    transform: scale(0.6 );
-    transition: 0.5s;
-  }
-
-  .social a:hover {
-    transform: scale(0.5) translateY(-15px);
-  }
-
-  .social-background {
-    background-color: rgb(255, 174, 0);
-    margin-left: 650px;
-    height: 87px;
-    position: absolute;
-    top: 99%;
-    z-index: -1;
-    width: 630px;
-  }
-
-  .social-background p {
-    margin-left: 45px;
-    padding-top: 48px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0px;
-    color: black;
-
-  }
-
-  .home .image-container img {
-
-    height: 100%;
-    right: 0;
-    width: 45%;
-    position: absolute;
-    bottom: 0%;
-    top: 73px;
-
-    height: 90%;
-    /* right: 0; */
-    width: 45%;
-    position: absolute;
-    /* z-index: -1; */
-
-  }
-
-  input[type=text] {
-    outline: none;
-    border: none;
-    border-bottom: 2px solid rgb(230, 226, 226);
-    border-right: 2px solid rgb(55, 177, 55);
-    padding: 6px;
-    margin-left: 7px;
-    width: 250px;
-    margin-top: 60px;
-    display: inline;
-  }
-
-  input[type=email] {
-    /* border: 3px solid red; */
-    border: none;
-    border-bottom: 2px solid #ccc;
-    outline: none;
-    padding: 6px;
-    margin-left: 7px;
-    width: 250px;
-    margin-top: 45px;
-    display: inline;
-
-  }
-
-
-  input[type=password] {
-    /* border: 3px solid red; */
-    border: none;
-    border-bottom: 2px solid rgb(230, 226, 226);
-    outline: none;
-    padding: 6px;
-    margin-left: 7px;
-    width: 250px;
-    margin-top: 35px;
-    display: inline;
-    background-color: #f6f7ff;
-  }
-
-  #Role {
-    border: none;
-    border-bottom: 2px solid rgb(230, 226, 226);
-    outline: none;
-    padding: 6px;
-    margin-left: 7px;
-    width: 250px;
-    margin-top: 45px;
-    display: block;
-    background-color: white;
-  }
-
-
-  ::placeholder {
-    color: rgb(179, 179, 179);
-
-  }
-
-  #email::placeholder {
-    color: rgb(110, 110, 110);
-  }
-
-  /* #email:active{
-      border-bottom: red;
-  } */
-
-  button {
-    background-color: rgb(255, 174, 0);
-    border: none;
-    outline: none;
-    padding: 10px;
+}
+.login-form-button {
+    background: #bf0505;
+    color: white;
+    padding: 10px 0px 30px 0px;
+    max-width: 150px;
     border-radius: 20px;
-    width: 150px;
-    color: white;
-    margin-top: 50px;
-    margin-left: 52px;
-    cursor: pointer;
-    box-shadow: 0px 6px 6px  rgb(255, 180, 18);
-  }
-
-  button a {
-    text-decoration: none;
-    /* transform: scale(1.1);
-    transition: 0.5s; */
-    color: white;
+    border: none;
     font-weight: 800;
     font-size: 1.1em;
-  }
+    margin-left: 190px;
+    margin-top: 29px;
+    width: 50%;
+}
 
-  /* button:hover{
-      box-shadow:2px 2px 5px r
-      transform: scale(1) translateY(-8px);
-  } */
+.login-form-button:hover{
+  background: #bf0505;
+  color: white;
+  border: none;
+}
 
-  /* input[type=text]:focus {} */
+.login-form-button a {
+  text-decoration: none;
+}
 
-  .google-sign-up img {
-    transform: scale(0.6 );
-    margin-left: 55px;
-    margin-top: 55px;
-    /* position: absolute; */
+.sign-up-text{
+   text-align: center;
+   margin: 80px 0 0 -200px;
+}
+.sign-up-text a {
+    color: #bf0505;
+    text-decoration: none;
+}
 
-  }
+.sign-up-text p {
+  color: rgba(0,0,0,.50);
+}
 
-  /* .google-sign-up a:hover {
-      transform: scale(1) translateY(-8px);
-  } */
+.sign-up-text h3 {
+    font-size: 2.4em;
+    font-weight: 900;
+}
 
-  .google-sign-up a {
-    margin-top: 65px;
-    margin-right: 882px;
-    font-size: 12px;
-    font-weight: 600;
+#google-signup-btn  {
+    background-color: white;
+    box-shadow: 0 2px 5px 0 black;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 12px 10px 31px 20px;
+    margin: 20px 0 0 0;
+}
+
+#google-signup-btn a {
+  color: rgba(0,0,0,.50);
+}
+
+.google{
+    padding: 0 10px 0 20px;
+}
+
+/*.login-form-forgot {
+    color: #bf0505;
     float: right;
-    cursor: pointer;
-    letter-spacing: 0;
     text-decoration: none;
-    /* transform: scale(1.1);
-    transition: 0.5s; */
-    color: rgb(110, 110, 110);
-  }
+}
 
-  .Alternative {
-    font-size: 10px;
-    margin-top: 32px;
-  }
-
-  .Alternative a {
+.login-form-forgot:hover {
     text-decoration: none;
-    margin-left: 8px;
-    font-size: 11px;
-    transform: scale(0.5);
-    transition: 0.5s;
-    /* color: rgb(110, 110, 110); */
-    color: rgb(110, 110, 110);
-  }
+    color: #bf0505;
+}*/
 
-  .a:hover {
-    opacity: 1.5;
-    transform: scale(0.5) translateY(-15px);
-  }
-
-  .Alternative p {
-    float: left;
-    margin-left: 50px;
-    font-size: 11px;
-    color: rgb(179, 179, 179);
-
-  }
-
-  h3 {
-    color: #2c3e50;
-    font-family: "Avenir", Helvetica, Arial, sans-serif
-  }
-
+.login-form-agreement {
+  color: #bf0505;
+}
 
 </style>
-

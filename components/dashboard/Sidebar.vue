@@ -11,7 +11,7 @@
         <div class="user-pic">
           <img
             class="img-responsive img-rounded"
-<!--            :src="$auth.user.gender == 'm' ? require('@/assets/img/user.jpg') : require('@/assets/img/female.png')"-->
+          :src="$auth.user.gender == 'm' ? require('@/assets/img/user.jpg') : require('@/assets/img/logo.png')"
             alt="User picture"
           >
         </div>
@@ -201,5 +201,4 @@
 </script>
 
 <style scoped>
-
 </style>

@@ -6,9 +6,10 @@
 
 
 <script>
+  import Plain from '../components/guest/footer'
   export default {
-    name: "plain-layout",
-
+    name: "plain",
+    components: {Plain}
   }
 </script>
 
