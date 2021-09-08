@@ -16,7 +16,7 @@
         <p>Akwa Ibom State</p>
       </div>
 
-      
+
     </a-col>
   </div>
  <div class="col2">
@@ -51,13 +51,13 @@
 </div>
 
     </div>
-    
+
 </template>
 
 <script>
 
     export default {
-  
+
     }
 </script>
 

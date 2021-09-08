@@ -10,45 +10,34 @@
     <section>
       <a-row>
       <a-col :sm="{ span: 6, offset: 10}" :lg="{ span: 10, offset: 0 }">
-      <div>
+      <div class="img-container">
          <img src="~/assets/img/Group 113.png" alt="" width="520px" height="688px">
       </div>
     </a-col>
-    <a-col :sm="{ span: 11, offset: 10}" :lg="{ span: 8, offset: 5}">
+    <a-col :sm="{ span: 5, offset: 5}" :lg="{ span: 10, offset: 2}">
     <div class="sign-up-text">
       <h3>Login</h3>
-      <p>Don't have an account? <a href="#">signup</a></p>
+      <p>Don't have an account? <a href="#">signup </a></p>
     <a-button type="" id="google-signup-btn">
       <a href="#">Sign in with google</a>
-      <i class="fab fa-google google" style="color: black;"></i>
+      <i class="fab fa-google google" style="color: black; font-size: 20px;"></i>
     </a-button>
     <a-button type="" id="facebook-signup-btn">
       <a href="#">Sign in with facebook</a>
-      <i class="fab fa-facebook" style="color: black;"></i>
+      <i class="fab fa-facebook-square" style="color: black; font-size: 20px;"></i>
     </a-button>
-    <div style="display: flex;">
-      <hr style="width:40%; background-color: #bf0505; margin: 41px 0px 0px 20px;">
+    <div style="display: flex;" class="alternative-container">
+      <hr style="width:40%; background-color: #bf0505; margin: 41px 0px 0px 70px;">
       <p id="alternative">Or</p>
-      <hr style="width:40%; background-color: #bf0505; margin-top: 41px; margin-left: 20px;" >
+      <hr style="width:40%; background-color: #bf0505; margin-top: 41px; margin-left: 19px;" >
     </div>
-
     </div>
+    </a-col>
+    <a-col :sm="{ span: 5, offset: 5}" :lg="{ span: 10, offset: 2}">
     <a-form
     id="components-form-demo-normal-login"
     :form="form"
-    class="login-form"
     @submit="handleSubmit">
-    <!--<a-form-item>
-      <a-input
-        v-decorator="[
-          'userName',
-          { rules: [{ required: true, message: 'Please input your username!' }] },
-        ]"
-        placeholder="Username"
-      >
-        <a-icon slot="prefix" type="user" style="color: rgba(0,0,0,.25)" />
-      </a-input>
-    </a-form-item>-->
     <a-form-item v-bind="formItemLayout">
       <a-input
         v-decorator="[
@@ -67,7 +56,7 @@
           },
         ]"
         placeholder="Email"
-        required>
+        >
       <a-icon slot="prefix" type="message" style="color: rgba(0,0,0,.25)"/>
       </a-input>
     </a-form-item>
@@ -79,22 +68,11 @@
         ]"
         type="password"
         placeholder="Password"
-        required>
+        >
         <a-icon slot="prefix" type="lock" style="color: rgba(0,0,0,.25)" />
       </a-input>
     </a-form-item>
     <a-form-item >
-      <!--<a-checkbox
-        v-decorator="[
-          'remember',
-          {
-            valuePropName: 'checked',
-            initialValue: true,
-          },
-        ]"
-      class="login-form-agreement" >
-           I agree to the terms of service and privacy policy
-      </a-checkbox>-->
       <a href="#" class="login-form-forgot">
         Forgot password
       </a><br>
@@ -119,6 +97,10 @@
     beforeMount() {
 
     },
+
+    beforeCreate() {
+    this.form = this.$form.createForm(this, { name: 'normal_login' });
+},
 
     methods: {
       handleSubmit(e) {
@@ -149,9 +131,9 @@ list-style: none;
 }
 
 #components-form-demo-normal-login{
-    margin: 45px 70px 0 -150px;
-
+    /* margin: 45px 0 0 0; */
 }
+
 .login-form-button {
     background: #bf0505;
     color: white;
@@ -179,7 +161,7 @@ list-style: none;
 
 .sign-up-text{
    text-align: center;
-   margin: 80px 0 0 -200px;
+   margin: 82px 0 0 0px;
 }
 .sign-up-text a {
     color: #bf0505;
@@ -243,4 +225,31 @@ list-style: none;
     color: #bf0505;
 }
 
+@media only screen and (max-width: 600px) {
+  #components-form-demo-normal-login {
+    margin-left: 35px;
+    width: 80%;
+  }
+  .img-container img {
+    width: 100%;
+    height: 100%;
+  }
+.sign-up-text {
+  margin-left: 40px;
+}
+
+.login-form-button {
+  margin-left: 52px;
+}
+
+.login-form-forgot {
+  margin-right: 10px;
+}
+
+.alternative-container hr {
+  margin-left: 90;
+
+}
+
+}
 </style>

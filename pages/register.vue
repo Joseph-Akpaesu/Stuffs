@@ -16,7 +16,7 @@
     </a-col>
     <a-col :sm="{ span: 11, offset: 10}" :lg="{ span: 8, offset: 5}">
     <div class="sign-up-text">
-      <h3>Sign-up with joseph's mail</h3>
+      <h3>Sign-up</h3>
       <p>Already hava an account? <a href="#">login</a></p>
     <a-button type="" id="google-signup-btn">
       <a href="#">Sign up with google</a>
@@ -26,7 +26,6 @@
     <a-form
     id="components-form-demo-normal-login"
     :form="form"
-    class="login-form"
     @submit="handleSubmit">
     <a-form-item>
       <a-input
@@ -95,8 +94,6 @@
   </a-form>
     </a-col>
     </a-row>
-
-
     </section>
 </div>
 </template>
